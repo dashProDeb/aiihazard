@@ -16,27 +16,45 @@ interface ImageGalleryProps {
 
 export function ImageGallery({ hazards }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<Hazard | null>(null);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+
+  const handleImageError = (hazardId: string) => {
+    setImageErrors((prev) => new Set(prev).add(hazardId));
+  };
+
+  const getImageSrc = (hazard: Hazard) => {
+    if (imageErrors.has(hazard.id)) {
+      return '/placeholder.svg';
+    }
+    return hazard.imageUrl;
+  };
+
+  // Only show pothole hazards — images from public/images/potholes/
+  const potholeHazards = hazards.filter((h) => h.type === 'pothole');
 
   return (
     <>
       <div className="glass-panel p-4 space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
-            Captured Images
+            Pothole Images
           </h3>
-          <span className="text-xs text-muted-foreground">{hazards.length} images</span>
+          <span className="text-xs text-muted-foreground">
+            {potholeHazards.length} images · public/images/potholes
+          </span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {hazards.slice(0, 8).map((hazard) => (
+          {potholeHazards.map((hazard) => (
             <button
               key={hazard.id}
               onClick={() => setSelectedImage(hazard)}
               className="group relative aspect-square rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all"
             >
               <img
-                src={hazard.imageUrl}
+                src={getImageSrc(hazard)}
                 alt={`${hazard.type} detection`}
+                onError={() => handleImageError(hazard.id)}
                 className="w-full h-full object-cover transition-transform group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2">
@@ -85,8 +103,9 @@ export function ImageGallery({ hazards }: ImageGalleryProps) {
           {selectedImage && (
             <div className="space-y-4">
               <img
-                src={selectedImage.imageUrl}
+                src={getImageSrc(selectedImage)}
                 alt={`${selectedImage.type} detection`}
+                onError={() => handleImageError(selectedImage.id)}
                 className="w-full aspect-video object-cover rounded-lg"
               />
               

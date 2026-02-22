@@ -27,8 +27,8 @@ export function HazardMap({ hazards, selectedHazard, onHazardSelect }: HazardMap
     if (!mapContainerRef.current || mapRef.current) return;
 
     const map = L.map(mapContainerRef.current, {
-      center: [40.7128, -74.006],
-      zoom: 13,
+      center: [23.8103, 90.4125], // Dhaka, Bangladesh
+      zoom: 7,
       zoomControl: false,
     });
 
