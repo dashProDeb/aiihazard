@@ -132,7 +132,6 @@ This project is specifically designed to run **completely offline**:
 - ✅ **Local image placeholders** instead of external URLs
 - ✅ **No cloud services** required
 
-Perfect for university project demonstrations and evaluation environments.
 
 ## 📊 Available Scripts
 
