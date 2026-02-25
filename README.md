@@ -65,12 +65,14 @@ npm run preview
 ## 📱 Usage
 
 ### Navigation
+
 - **Map View**: Interactive coordinate-based hazard visualization
 - **Table View**: Detailed hazard data with sorting and selection
 - **Analytics**: Statistical overview with charts and metrics
 - **Images**: Gallery of hazard visual evidence
 
 ### Key Features
+
 - **Hazard Selection**: Click on table rows or map markers to focus
 - **Severity Coding**: Color-coded hazards (Red=High, Yellow=Medium, Green=Low)
 - **Live Status**: Real-time IoT connection monitoring
@@ -118,6 +120,7 @@ This dashboard is designed to work with ESP32 LoRa modules for road hazard detec
 - **Real-time Monitoring**: Live connection status
 
 ### Data Flow Architecture
+
 ```
 ESP32 (LoRa TX) → LoRa Receiver → Local Server → React Dashboard
 ```
@@ -131,7 +134,6 @@ This project is specifically designed to run **completely offline**:
 - ✅ **Coordinate-based mapping** without tile servers
 - ✅ **Local image placeholders** instead of external URLs
 - ✅ **No cloud services** required
-
 
 ## 📊 Available Scripts
 
@@ -164,7 +166,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- Built with [Lovable](https://lovable.dev) for rapid prototyping
+- Built UI with the help of [Lovable](https://lovable.dev) for rapid prototyping
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
 - Icons from [Lucide React](https://lucide.dev/)
 - Maps powered by [Leaflet](https://leafletjs.com/)
