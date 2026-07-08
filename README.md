@@ -164,7 +164,7 @@ npm run test         # Run tests (if configured)
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Built UI with the help of [Lovable](https://lovable.dev) for rapid prototyping
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
